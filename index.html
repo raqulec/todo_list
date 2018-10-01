@@ -3,8 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Task Menager</title>
-    <link rel="stylesheet" href="styles.css" type="text/css">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
     <script src="https://unpkg.com/react/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone/babel.js"></script>
@@ -12,78 +15,8 @@
 
 <body>
     <div id="app"></div>
-    <script type="text/babel">
-        class Presentational extends React.Component {
-            constructor(props) {
-                super(props);
-                this.state = {
-                    input: '',
-                    messages: [],
-                    bgColor: [
-                    '#16a085', '#27ae60', '#2c3e50', '#f39c12', '#e74c3c', '#9b59b6', '#FB6964', '#342224', "#472E32", "#BDBB99", "#77B1A9", "#73A857"
-                    ],
-                    selectedColor: ''
-                }
-                this.handleChange = this.handleChange.bind(this);
-                this.submitMessages = this.submitMessages.bind(this);
-                this.getRandomColor = this.getRandomColor.bind(this);
-            }
-            handleChange(event) {
-                this.setState({
-                    input: event.target.value
-                });
-            }
-            submitMessages() {
-                if(this.state.input != '') {
-                this.setState({
-                    input: '',
-                    messages: this.state.messages.concat(this.state.input)
-                });
-                }
-            }
-            componentDidMount() {
-                this.getRandomColor()
-            }
-
-            getRandomColor(){
-            var item = this.state.bgColor[Math.floor(Math.random()*this.state.bgColor.length)];
-                this.setState({
-                    selectedColor: item
-                })
-            }
-
-            componentDidMount() {
-                document.body.style.backgroundColor = this.props.selectedColor;
-            }     
-
-            // componentDidMount() {
-            //     document.body.style.backgroundColor = null;
-            // }       
-
-            render() {
-                // document.body.style.backgroundColor = this.state.selectedColor;
-                const tasks = this.state.messages.map( (msg, idx) => {
-                                return (
-                                    <li key={idx}>{msg}</li>
-                                )
-                              })
-                return (
-                    <div>
-                        <h2>Type in a new message:</h2>
-                        <input 
-                            value={this.state.input}
-                            onChange={this.handleChange}/><br/>
-                        
-                        <button onClick={(event) => { this.submitMessages(); this.getRandomColor();}}>Submit!</button>
-                        <ul>
-                            {tasks}
-                        </ul>
-                    </div>
-                );
-            }
-        };
-        ReactDOM.render(<Presentational />, document.getElementById('app'));
-    </script>
+    <script src="js/index.js" type="text/babel"></script>
+     
 </body>
 
 </html>

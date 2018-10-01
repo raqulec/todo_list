@@ -1,0 +1,85 @@
+
+.background-orange {
+  background-color: #f39c12;
+}
+
+body {
+    transition: background-color 2s;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+#header {
+  font-family: 'Work Sans', sans-serif;
+  color: white;
+}
+
+label {
+  color: white;
+  font-family: 'Work Sans', sans-serif;
+}
+
+#input {
+  color: black;
+  font-family: 'Work Sans', sans-serif;
+}
+
+ul li {
+	list-style-type: none;
+  padding: 10px;
+  position: relative;
+  right: 50px;
+}
+
+#tasks {
+	position: relative;
+	padding-left: 30px;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+#tasks:before, #tasks:after {
+	/* font-family: "Glyphicons Halflings"; */
+	font-size: 21px;
+	/*absolutely positioned*/
+	position: absolute; top: 0; left: 0;
+}
+
+#tasks:before {
+  font-family: "Glyphicons Halflings";
+  content:"\e157"; /*unchecked*/
+  font-family: "Font Awesome 5 Free"; 
+  content: "\f0c8"
+}
+
+#tasks:after {
+  /* font-family: "Glyphicons Halflings"; */
+  font-family: "Font Awesome 5 Free";
+	content:"\f14a"; /*checked*/
+	/*checked icon will be hidden by default by using 0 max-width and overflow hidden*/
+	max-width: 0;
+	overflow: hidden;
+	opacity: 0.5;
+	/*CSS3 transitions for animated effect*/
+  transition: all 0.35s;
+}
+
+/*hiding the original checkboxes*/
+input[type="checkbox"] {
+	display: none;
+}
+
+/*when the user checks the checkbox the checked icon will animate in*/
+input[type="checkbox"]:checked + #tasks:after {
+	max-width: 25px; /*an arbitratry number more than the icon's width*/
+  opacity: 1; /*for fade in effect*/
+}
+
+
+
+
+
+
+
+
